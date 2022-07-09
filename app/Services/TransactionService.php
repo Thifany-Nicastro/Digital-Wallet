@@ -8,6 +8,9 @@ use App\Interfaces\WalletRepositoryInterface;
 use App\Services\PaymentAuthorizationService;
 use App\Exceptions\Transaction\InsufficientFundsException;
 use App\Exceptions\Transaction\PaymentUnauthorizedException;
+use App\Exceptions\Transaction\UnsuccessfulTransactionException;
+use Illuminate\Support\Facades\DB;
+use Exception;
 
 class TransactionService
 {
@@ -31,10 +34,27 @@ class TransactionService
             throw new InsufficientFundsException();
         }
 
-        $transaction = $this->transactionRepository->createTransaction([
-            'sender_id' => $sender,
-            ... $transactionDetails,
-        ]);
+
+        DB::beginTransaction();
+
+        try {
+            $transaction = $this->transactionRepository->createTransaction([
+                'sender_id' => $sender,
+                ... $transactionDetails,
+            ]);
+
+            $this->walletRepository->removeFromWallet($transaction->sender_id, $transaction->amount);
+            $this->walletRepository->addToWallet($transaction->receiver_id, $transaction->amount);
+
+            DB::commit();
+
+        } catch (Exception $e) {
+
+            DB::rollBack();
+
+            throw new UnsuccessfulTransactionException();
+        }
+
 
         return $transaction;
     }

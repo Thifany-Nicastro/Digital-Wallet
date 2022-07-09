@@ -2,16 +2,16 @@
 
 namespace App\Services;
 
-use Exception;
+use App\Exceptions\Authentication\InvalidCredentialsException;
 
-class AuthService
+class AuthenticationService
 {
     public function login(array $credentials): string
     {
         $token = auth()->attempt($credentials);
 
         if (!$token) {
-            throw new Exception('Invalid credentials');
+            throw new InvalidCredentialsException();
         }
 
         return $token;

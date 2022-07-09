@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Response;
-use App\Http\Controllers\User\AuthController;
+use App\Http\Controllers\User\AuthenticationController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\Wallet\TransactionController;
 
@@ -24,7 +24,7 @@ Route::get('/ping', function () {
     ]);
 });
 
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthenticationController::class, 'login']);
 
 Route::middleware('auth:api')->group(function () {
     Route::get('/profiles', [ProfileController::class, 'showUserProfile']);

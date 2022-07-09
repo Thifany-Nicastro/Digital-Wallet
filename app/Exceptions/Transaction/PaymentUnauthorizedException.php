@@ -3,6 +3,7 @@
 namespace App\Exceptions\Transaction;
 
 use Exception;
+use Illuminate\Http\Response;
 
 class PaymentUnauthorizedException extends Exception
 {
@@ -10,6 +11,6 @@ class PaymentUnauthorizedException extends Exception
     {
         return response()->json([
             'message' => 'Payment not authorized'
-        ], 400);
+        ], Response::HTTP_BAD_REQUEST);
     }
 }
