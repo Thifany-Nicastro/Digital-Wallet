@@ -7,14 +7,9 @@ use App\Models\Wallet;
 
 class WalletRepository implements WalletRepositoryInterface
 {
-    public function getWalletByUserId(string $userId): Wallet
+    public function getWalletBalance(string $walletId): float
     {
-        return Wallet::where('user_id', $userId)->firstOrFail();
-    }
-
-    public function getWalletById(string $walletId): Wallet
-    {
-        return Wallet::findOrFail($walletId);
+        return Wallet::findOrFail($walletId)->balance;
     }
 
     public function addToWallet(string $walletId, float $amount)

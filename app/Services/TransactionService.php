@@ -14,7 +14,7 @@ class TransactionService
     public function __construct(
         private TransactionRepositoryInterface $transactionRepository,
         private WalletRepositoryInterface $walletRepository,
-        private PaymentAuthorizationService $paymentAuthorizationService
+        private PaymentAuthorizationService $paymentAuthorizationService,
     ) {}
 
     public function createNewTransaction(string $sender, array $transactionDetails): Transaction
@@ -25,15 +25,17 @@ class TransactionService
             throw new PaymentUnauthorizedException();
         }
 
-        $walletBalance = $this->walletRepository->getWalletById($sender)->balance;
+        $walletBalance = $this->walletRepository->getWalletBalance($sender);
 
         if ($walletBalance < $transactionDetails['amount']) {
             throw new InsufficientFundsException();
         }
 
-        return $this->transactionRepository->createTransaction([
+        $transaction = $this->transactionRepository->createTransaction([
             'sender_id' => $sender,
             ... $transactionDetails,
         ]);
+
+        return $transaction;
     }
 }
