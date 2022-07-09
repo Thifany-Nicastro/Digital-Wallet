@@ -21,7 +21,7 @@ class AuthController extends Controller
             $token = $this->authService->login($request->validated());
 
             return response()->json([
-                'token' => $token,
+                'access_token' => $token,
             ], Response::HTTP_OK);
 
         } catch (Exception $e) {

@@ -17,10 +17,6 @@ use App\Http\Controllers\Users\ProfileController;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
 Route::get('/ping', function () {
     return response()->json([
         'message' => 'Pong!',
@@ -29,7 +25,7 @@ Route::get('/ping', function () {
 
 Route::post('/login', [AuthController::class, 'login']);
 
-Route::get('/profile', ProfileController::class)->middleware('auth:api');
+Route::get('/profiles', ProfileController::class)->middleware('auth:api');
 
 Route::fallback(function () {
     abort(Response::HTTP_NOT_FOUND, 'Page Not Found');

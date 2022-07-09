@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Users;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Http\Resources\ProfileResource;
 
 class ProfileController extends Controller
 {
@@ -16,8 +17,9 @@ class ProfileController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return response()->json([
-            'message' => 'ok!',
-        ], Response::HTTP_OK);
+        return response()->json(
+            new ProfileResource(auth()->user()),
+            Response::HTTP_OK
+        );
     }
 }

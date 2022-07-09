@@ -34,6 +34,12 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
+        $this->renderable(function (Throwable $e, $request) {
+            if ($request->is('api*')) {
+                $request->headers->set('Accept', 'application/json');
+            }
+        });
+
         $this->reportable(function (Throwable $e) {
             //
         });
