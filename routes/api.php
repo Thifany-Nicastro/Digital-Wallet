@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Response;
+use App\Http\Controllers\Users\AuthController;
+use App\Http\Controllers\Users\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,15 +17,19 @@ use Illuminate\Http\Response;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 Route::get('/ping', function () {
     return response()->json([
         'message' => 'Pong!',
     ]);
 });
+
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::get('/profile', ProfileController::class)->middleware('auth:api');
 
 Route::fallback(function () {
     abort(Response::HTTP_NOT_FOUND, 'Page Not Found');

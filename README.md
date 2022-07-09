@@ -53,3 +53,8 @@ Ping!
 curl --request GET \
   --url http://localhost/api/ping
 ```
+
+## Packages utilizados
+
+- [nunomaduro/larastan](https://github.com/nunomaduro/larastan)
+- [tymondesigns/jwt-auth](https://github.com/tymondesigns/jwt-auth)
