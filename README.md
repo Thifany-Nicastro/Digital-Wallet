@@ -42,13 +42,27 @@ Instale as dependências do projeto
 composer install
 ```
 
-Gerar a key do projeto Laravel
+Gere uma nova key da aplicação
 ```sh
 php artisan key:generate
 ```
 
-Ping!
+Gere um novo secret para o JWT
+```sh
+php artisan jwt:generate
+```
 
+Rode as migrations
+```sh
+php artisan migrate
+```
+
+Rode as seeds
+```sh
+php artisan db:seed
+```
+
+Ping!
 ```curl
 curl --request GET \
   --url http://localhost/api/ping

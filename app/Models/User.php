@@ -75,4 +75,9 @@ class User extends Authenticatable implements JWTSubject
             get: fn ($value, $attributes) => "$attributes[first_name] $attributes[last_name]",
         );
     }
+
+    public function wallet()
+    {
+        return $this->hasOne(Wallet::class);
+    }
 }
