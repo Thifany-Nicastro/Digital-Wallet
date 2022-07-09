@@ -18,7 +18,8 @@ class ProfileResource extends JsonResource
             'id' => $this->id,
             'name' => $this->full_name,
             'email' => $this->email,
-            'balance' => $this->wallet->balance
+            'balance' => $this->wallet->balance,
+            'type' => $this->isSeller() ? 'seller' : 'customer',
         ];
     }
 }

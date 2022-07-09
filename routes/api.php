@@ -29,7 +29,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::middleware('auth:api')->group(function () {
     Route::get('/profiles', [ProfileController::class, 'showUserProfile']);
 
-    Route::post('/transactions', [TransactionController::class, 'pay']);
+    Route::post('/transactions', [TransactionController::class, 'pay'])->middleware('customer');
 });
 
 

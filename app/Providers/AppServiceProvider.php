@@ -4,8 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Http\Resources\Json\JsonResource;
-use App\Interfaces\TransactionRepositoryInterface;
-use App\Repositories\TransactionRepository;
+use Faker\Generator as FakerGenerator;
+use Faker\Factory as FakerFactory;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,6 +27,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         JsonResource::withoutWrapping();
-        $this->app->bind(TransactionRepositoryInterface::class, TransactionRepository::class);
+
+        $this->app->singleton(FakerGenerator::class, function () {
+            return FakerFactory::create('pt_BR');
+        });
     }
 }

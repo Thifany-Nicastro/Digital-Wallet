@@ -17,7 +17,7 @@ class TransactionController extends Controller
 
     public function pay(TransactionRequest $request): JsonResponse
     {
-        $transaction = $this->transactionService->pay(
+        $transaction = $this->transactionService->createNewTransaction(
             auth()->user()->wallet->id,
             $request->validated()
         );

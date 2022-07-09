@@ -19,11 +19,16 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $document = [
+            $this->faker->cpf(false),
+            $this->faker->cnpj(false)
+        ];
+
         return [
             'id' => (string) Uuid::uuid4(),
             'first_name' => $this->faker->firstName(),
             'last_name' => $this->faker->lastName(),
-            'document' => Str::random(11),
+            'document' => $document[random_int(0, 1)],
             'email' => $this->faker->unique()->safeEmail(),
             'password' => Hash::make('password')
         ];

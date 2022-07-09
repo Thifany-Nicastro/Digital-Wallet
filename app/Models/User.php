@@ -76,6 +76,11 @@ class User extends Authenticatable implements JWTSubject
         );
     }
 
+    public function isSeller(): bool
+    {
+        return strlen($this->document) === 14;
+    }
+
     public function wallet()
     {
         return $this->hasOne(Wallet::class);
