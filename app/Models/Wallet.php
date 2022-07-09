@@ -9,6 +9,10 @@ class Wallet extends Model
 {
     use HasFactory;
 
+    protected $keyType = 'string';
+
+    public $incrementing = false;
+
     protected $fillable = [
         'user_id', 'balance',
     ];
@@ -16,5 +20,10 @@ class Wallet extends Model
     public function user()
     {
         return $this->BelongsTo(User::class);
+    }
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
     }
 }

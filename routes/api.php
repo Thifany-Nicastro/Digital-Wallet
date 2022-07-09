@@ -3,8 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Response;
-use App\Http\Controllers\Users\AuthController;
-use App\Http\Controllers\Users\ProfileController;
+use App\Http\Controllers\User\AuthController;
+use App\Http\Controllers\User\ProfileController;
+use App\Http\Controllers\Wallet\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +26,12 @@ Route::get('/ping', function () {
 
 Route::post('/login', [AuthController::class, 'login']);
 
-Route::get('/profiles', ProfileController::class)->middleware('auth:api');
+Route::middleware('auth:api')->group(function () {
+    Route::get('/profiles', [ProfileController::class, 'showUserProfile']);
+
+    Route::post('/transactions', [TransactionController::class, 'pay']);
+});
+
 
 Route::fallback(function () {
     abort(Response::HTTP_NOT_FOUND, 'Page Not Found');

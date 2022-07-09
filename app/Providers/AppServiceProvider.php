@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Interfaces\TransactionRepositoryInterface;
+use App\Repositories\TransactionRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,5 +27,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         JsonResource::withoutWrapping();
+        $this->app->bind(TransactionRepositoryInterface::class, TransactionRepository::class);
     }
 }
