@@ -1,74 +1,23 @@
-# Digital Wallet
+<h1 align="center">
+    📱💸 Digital Wallet
+</h1>
 
-## Como instalar
+## Sobre
+Projeto de uma carteira digital para consumidores e lojistas
 
-Clone o repositório
-```sh
-git clone https://github.com/Thifany-Nicastro/Digital-Wallet.git
-```
+## 📖 Tabela de conteúdos
+=================
 
-Entre no diretório
-```sh
-cd Digital-Wallet
-```
+* [Sobre](#Sobre)
+* [Tabela de Conteudo](#tabela-de-conteudo)
+* [Instalação](#instalacao)
+* [Packages utilizados](#Packages-utilizados)
 
-Clone o arquivo .env
-```sh
-cp .env.example .env
-```
+## 🛠 Instalação
 
-Atualize as variáveis de ambiente
-```dosini
-DB_CONNECTION=mysql
-DB_HOST=mysql
-DB_PORT=3306
-DB_DATABASE=database
-DB_USERNAME=username
-DB_PASSWORD=password
-```
+Por favor visite a [Wiki](https://github.com/Thifany-Nicastro/Digital-Wallet/wiki) para mais informações
 
-Suba os containers
-```sh
-docker-compose up -d
-```
-
-Acesse o container da aplicação
-```sh
-docker-compose exec app bash
-```
-
-Instale as dependências do projeto
-```sh
-composer install
-```
-
-Gere uma nova key da aplicação
-```sh
-php artisan key:generate
-```
-
-Gere um novo secret para o JWT
-```sh
-php artisan jwt:generate
-```
-
-Rode as migrations
-```sh
-php artisan migrate
-```
-
-Rode as seeds
-```sh
-php artisan db:seed
-```
-
-Ping!
-```curl
-curl --request GET \
-  --url http://localhost/api/ping
-```
-
-## Packages utilizados
+## 📦 Packages utilizados
 
 - [nunomaduro/larastan](https://github.com/nunomaduro/larastan)
 - [tymondesigns/jwt-auth](https://github.com/tymondesigns/jwt-auth)
