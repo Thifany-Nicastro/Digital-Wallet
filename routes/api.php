@@ -27,9 +27,9 @@ Route::get('/ping', function () {
 Route::post('/login', [AuthenticationController::class, 'login']);
 
 Route::middleware('auth:api')->group(function () {
-    Route::get('/profiles', [ProfileController::class, 'showUserProfile']);
+    Route::get('/profile', [ProfileController::class, 'showUserProfile']);
 
-    Route::post('/transactions', [TransactionController::class, 'pay'])->middleware('customer');
+    Route::post('/transactions', [TransactionController::class, 'createNewTransaction'])->middleware('customer');
 });
 
 

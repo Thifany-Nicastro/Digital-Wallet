@@ -12,7 +12,7 @@ class WalletRepository implements WalletRepositoryInterface
         return Wallet::findOrFail($walletId)->balance;
     }
 
-    public function addToWallet(string $walletId, float $amount)
+    public function addToWallet(string $walletId, float $amount): void
     {
         $wallet = Wallet::findOrFail($walletId);
 
@@ -23,7 +23,7 @@ class WalletRepository implements WalletRepositoryInterface
         ]);
     }
 
-    public function removeFromWallet(string $walletId, float $amount)
+    public function removeFromWallet(string $walletId, float $amount): void
     {
         $wallet = Wallet::findOrFail($walletId);
 

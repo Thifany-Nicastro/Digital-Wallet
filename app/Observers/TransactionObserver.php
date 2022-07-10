@@ -11,7 +11,7 @@ use App\Notifications\PaymentReceived;
 class TransactionObserver
 {
     /**
-     * Handle the User "creating" event.
+     * Handle the Transaction "creating" event.
      *
      * @param  \App\Models\Transaction  $transaction
      * @return void
@@ -36,49 +36,5 @@ class TransactionObserver
         if ($isAvailable) {
             Notification::send($receiver, new PaymentReceived());
         }
-    }
-
-    /**
-     * Handle the Transaction "updated" event.
-     *
-     * @param  \App\Models\Transaction  $transaction
-     * @return void
-     */
-    public function updated(Transaction $transaction)
-    {
-        //
-    }
-
-    /**
-     * Handle the Transaction "deleted" event.
-     *
-     * @param  \App\Models\Transaction  $transaction
-     * @return void
-     */
-    public function deleted(Transaction $transaction)
-    {
-        //
-    }
-
-    /**
-     * Handle the Transaction "restored" event.
-     *
-     * @param  \App\Models\Transaction  $transaction
-     * @return void
-     */
-    public function restored(Transaction $transaction)
-    {
-        //
-    }
-
-    /**
-     * Handle the Transaction "force deleted" event.
-     *
-     * @param  \App\Models\Transaction  $transaction
-     * @return void
-     */
-    public function forceDeleted(Transaction $transaction)
-    {
-        //
     }
 }

@@ -9,9 +9,6 @@ use Illuminate\Http\JsonResponse;
 
 class ProfileController extends Controller
 {
-    /**
-     * @return \Illuminate\Http\JsonResponse
-     */
     public function showUserProfile(): JsonResponse
     {
         return response()->json(

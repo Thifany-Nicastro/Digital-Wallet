@@ -22,7 +22,7 @@ class TransactionService
 
     public function createNewTransaction(string $sender, array $transactionDetails): Transaction
     {
-        $authorized = $this->paymentAuthorizationService->checkAuthorization();
+        $authorized = $this->paymentAuthorizationService->verifyPaymentAuthorization();
 
         if (!$authorized) {
             throw new PaymentUnauthorizedException();

@@ -16,30 +16,15 @@ class User extends Authenticatable implements JWTSubject
 
     public $incrementing = false;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'first_name', 'last_name', 'document', 'email', 'password',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
@@ -64,11 +49,6 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
-    /**
-     * Get the user's full name.
-     *
-     * @return \Illuminate\Database\Eloquent\Casts\Attribute
-     */
     protected function fullName(): Attribute
     {
         return Attribute::make(

@@ -15,7 +15,7 @@ class TransactionController extends Controller
         private TransactionService $transactionService
     ) {}
 
-    public function pay(TransactionRequest $request): JsonResponse
+    public function createNewTransaction(TransactionRequest $request): JsonResponse
     {
         $transaction = $this->transactionService->createNewTransaction(
             auth()->user()->wallet->id,

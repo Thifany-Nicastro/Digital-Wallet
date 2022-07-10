@@ -2,12 +2,11 @@
     📱💸 Digital Wallet
 </h1>
 
-## Sobre
+## ❔ Sobre
 Projeto de uma carteira digital para consumidores e lojistas
 
-## 📖 Tabela de conteúdos
+📖 Tabela de conteúdos
 =================
-
 * [Sobre](#Sobre)
 * [Tabela de Conteudo](#tabela-de-conteudo)
 * [Instalação](#instalacao)
