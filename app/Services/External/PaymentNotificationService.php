@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\External;
 
 use Illuminate\Support\Facades\Http;
 
-class NotificationService
+class PaymentNotificationService
 {
     private const SUCCESS = 'Success';
 

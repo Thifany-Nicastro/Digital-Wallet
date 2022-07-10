@@ -5,7 +5,7 @@ namespace App\Services;
 use App\Models\Transaction;
 use App\Interfaces\TransactionRepositoryInterface;
 use App\Interfaces\WalletRepositoryInterface;
-use App\Services\PaymentAuthorizationService;
+use App\Services\External\PaymentAuthorizationService;
 use App\Exceptions\Transaction\InsufficientFundsException;
 use App\Exceptions\Transaction\PaymentUnauthorizedException;
 use App\Exceptions\Transaction\UnsuccessfulTransactionException;

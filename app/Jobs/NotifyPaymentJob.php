@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use App\Services\NotificationService;
+use App\Services\External\PaymentNotificationService;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\PaymentReceived;
 use App\Models\User;
@@ -31,9 +31,9 @@ class NotifyPaymentJob implements ShouldQueue
      *
      * @return void
      */
-    public function handle()
+    public function handle(PaymentNotificationService $paymentNotificationService)
     {
-        $isAvailable = NotificationService::verifyNotificationService();
+        $isAvailable = $paymentNotificationService->verifyNotificationService();
 
         if ($isAvailable) {
             Notification::send($this->receiver, new PaymentReceived());
