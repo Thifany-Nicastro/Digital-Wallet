@@ -4,9 +4,7 @@ namespace App\Observers;
 
 use App\Models\Transaction;
 use Ramsey\Uuid\Uuid;
-use App\Services\NotificationService;
-use Illuminate\Support\Facades\Notification;
-use App\Notifications\PaymentReceived;
+use App\Jobs\NotifyPaymentJob;
 
 class TransactionObserver
 {
@@ -31,10 +29,6 @@ class TransactionObserver
     {
         $receiver = $transaction->receiver->user;
 
-        $isAvailable = NotificationService::verifyNotificationService();
-
-        if ($isAvailable) {
-            Notification::send($receiver, new PaymentReceived());
-        }
+        NotifyPaymentJob::dispatch($receiver);
     }
 }
