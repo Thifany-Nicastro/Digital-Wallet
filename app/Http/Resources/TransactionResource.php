@@ -19,7 +19,7 @@ class TransactionResource extends JsonResource
             'payer' => $this->sender->user->full_name,
             'payee' => $this->receiver->user->full_name,
             'description' => $this->description,
-            'value' => $this->amount,
+            'amount' => $this->amount,
             'date' => $this->created_at
         ];
     }

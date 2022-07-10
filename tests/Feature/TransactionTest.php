@@ -44,8 +44,40 @@ class TransactionTest extends TestCase
         $response->assertStatus(200);
         $response->assertJson([
             'description' => 'lorem ipsum',
-            'value' => '100'
+            'amount' => '100'
         ]);
+    }
+
+    /**
+     * @test
+     */
+    public function customer_should_not_be_able_to_make_payment_with_insufficient_funds()
+    {
+        $sender = User::factory()
+            ->has(
+                Wallet::factory()
+                    ->state(function (array $attributes) {
+                        return ['balance' => '100'];
+                    })
+            )->create([
+                'document' => $this->faker->cpf(false)
+            ]);
+
+        $receiver = User::factory()
+            ->has(
+                Wallet::factory()
+                    ->state(function (array $attributes) {
+                        return ['balance' => '100'];
+                    })
+            )->create();
+
+        $response = $this->loginAs($sender)->post('/api/transactions', [
+            'receiver_id' => $receiver->wallet->id,
+            'description' => 'lorem ipsum',
+            'amount' => '200'
+        ]);
+
+        $response->assertStatus(400);
     }
 
     /**
