@@ -8,7 +8,7 @@ class PaymentNotificationService
 {
     private const SUCCESS = 'Success';
 
-    public static function verifyNotificationService(): bool
+    public static function isAvailable(): bool
     {
         $response = Http::get('http://o4d9z.mocklab.io/notify')->json();
 

@@ -33,7 +33,7 @@ class NotifyPaymentJob implements ShouldQueue
      */
     public function handle(PaymentNotificationService $paymentNotificationService)
     {
-        $isAvailable = $paymentNotificationService->verifyNotificationService();
+        $isAvailable = $paymentNotificationService->isAvailable();
 
         if ($isAvailable) {
             Notification::send($this->receiver, new PaymentReceived());
