@@ -15,7 +15,7 @@ class TransactionTest extends TestCase
     /**
      * @test
      */
-    public function customer_should_be_able_to_make_payment()
+    public function user_should_be_able_to_make_payment()
     {
         $sender = User::factory()
             ->has(
@@ -51,7 +51,7 @@ class TransactionTest extends TestCase
     /**
      * @test
      */
-    public function customer_should_not_be_able_to_make_payment_with_insufficient_funds()
+    public function user_should_not_be_able_to_make_payment_with_insufficient_funds()
     {
         $sender = User::factory()
             ->has(
@@ -78,6 +78,16 @@ class TransactionTest extends TestCase
         ]);
 
         $response->assertStatus(400);
+    }
+
+    /**
+     * @test
+     */
+    public function user_should_not_be_able_to_make_payment_when_unauthenticated()
+    {
+        $response = $this->post('/api/transactions');
+
+        $response->assertStatus(401);
     }
 
     /**
