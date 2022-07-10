@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Http;
 
 class PaymentAuthorizationService
 {
-    const AUTHORIZED = 'Autorizado';
+    private const AUTHORIZED = 'Autorizado';
 
     public function verifyPaymentAuthorization(): bool
     {

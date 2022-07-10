@@ -8,7 +8,7 @@ use App\Notifications\PaymentReceived;
 
 class NotificationService
 {
-    const SUCCESS = 'Success';
+    private const SUCCESS = 'Success';
 
     public static function verifyNotificationService(): bool
     {

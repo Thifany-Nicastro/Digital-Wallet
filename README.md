@@ -20,3 +20,4 @@ Por favor visite a [Wiki](https://github.com/Thifany-Nicastro/Digital-Wallet/wik
 
 - [nunomaduro/larastan](https://github.com/nunomaduro/larastan)
 - [tymondesigns/jwt-auth](https://github.com/tymondesigns/jwt-auth)
+- [nunomaduro/phpinsights](https://github.com/nunomaduro/phpinsights)

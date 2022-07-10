@@ -34,7 +34,6 @@ class TransactionService
             throw new InsufficientFundsException();
         }
 
-
         DB::beginTransaction();
 
         try {
@@ -54,7 +53,6 @@ class TransactionService
 
             throw new UnsuccessfulTransactionException();
         }
-
 
         return $transaction;
     }
