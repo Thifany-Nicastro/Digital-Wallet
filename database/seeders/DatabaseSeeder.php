@@ -16,8 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(3)
-            ->has(Wallet::factory())
+        Wallet::factory(3)
             ->create();
     }
 }
