@@ -1,0 +1,92 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Digital Wallet",
+      "description": "Lorem Ipsum",
+      "version": "1.0.0"
+    },
+    "servers": [{
+      "url": "http://localhost/api/"
+    }],
+    "tags": [
+      {
+        "name": "transactions",
+        "description": "..."
+      }
+    ],
+    "paths": {
+      "/transactions": {
+        "post": {
+          "tags": [
+            "transactions"
+          ],
+          "summary": "Cria uma nova transação",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "receiver_id": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "amount": {
+                      "type": "numeric"
+                    }
+                  },
+                  "example": {
+                    "receiver_id": "4491db62-b688-4f2c-8235-ddc923b6555c",
+                    "description": "lorem ipsum",
+                    "amount": 50
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Operação realizada com sucesso.",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "payer": {
+                        "type": "string"
+                      },
+                      "payee": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "amount": {
+                        "type": "string"
+                      },
+                      "date": {
+                        "type": "string"
+                      }
+                    },
+                    "example": {
+                      "id": "618ec699-048b-428a-9a8d-55da37003a67",
+                      "payer": "Marco Delatorre",
+                      "payee": "Matheus Cordeiro",
+                      "description": "lorem ipsum",
+                      "amount": "50.00",
+                      "date": "2022-07-14T17:12:42.000000Z"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }

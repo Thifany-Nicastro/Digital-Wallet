@@ -24,7 +24,7 @@ class CreateTransactionController extends Controller
 
         return response()->json(
             new TransactionResource($transaction),
-            Response::HTTP_OK
+            Response::HTTP_CREATED
         );
     }
 }

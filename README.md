@@ -18,6 +18,7 @@ Por favor visite a [Wiki](https://github.com/Thifany-Nicastro/Digital-Wallet/wik
 
 ## 📦 Packages utilizados
 
-- [nunomaduro/larastan](https://github.com/nunomaduro/larastan)
 - [tymondesigns/jwt-auth](https://github.com/tymondesigns/jwt-auth)
+- [nunomaduro/larastan](https://github.com/nunomaduro/larastan)
 - [nunomaduro/phpinsights](https://github.com/nunomaduro/phpinsights)
+- [DarkaOnLine/L5-Swagger](https://github.com/DarkaOnLine/L5-Swagger)
