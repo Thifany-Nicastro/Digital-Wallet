@@ -30,6 +30,7 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/profile', [ProfileController::class, 'showUserProfile']);
 
     Route::post('/transactions', [TransactionController::class, 'createNewTransaction'])->middleware('customer');
+    Route::get('/transactions', [TransactionController::class, 'getUserTransactions']);
 });
 
 

@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Interfaces\WalletRepositoryInterface;
 use App\Models\Wallet;
+use Illuminate\Support\Collection;
 
 class WalletRepository implements WalletRepositoryInterface
 {
@@ -32,5 +33,12 @@ class WalletRepository implements WalletRepositoryInterface
         $wallet->update([
             'balance' => $currentBalance - $amount
         ]);
+    }
+
+    public function getWalletTransactions(string $walletId): Collection
+    {
+        $wallet = Wallet::findOrFail($walletId);
+
+        return $wallet->transactions;
     }
 }

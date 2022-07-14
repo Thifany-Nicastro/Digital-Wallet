@@ -27,4 +27,16 @@ class TransactionController extends Controller
             Response::HTTP_OK
         );
     }
+
+    public function getUserTransactions(): JsonResponse
+    {
+        $transactions = $this->transactionService->getUserTransactions(
+            auth()->user()->wallet->id
+        );
+
+        return response()->json(
+            TransactionResource::collection($transactions),
+            Response::HTTP_OK
+        );
+    }
 }

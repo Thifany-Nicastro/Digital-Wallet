@@ -19,11 +19,11 @@ class Wallet extends Model
 
     public function user()
     {
-        return $this->BelongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function transactions()
     {
-        return $this->hasMany(Transaction::class);
+        return $this->hasMany(Transaction::class, 'sender_id')->orWhere('receiver_id', $this->id);
     }
 }
