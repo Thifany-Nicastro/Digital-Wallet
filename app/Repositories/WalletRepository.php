@@ -39,6 +39,6 @@ class WalletRepository implements WalletRepositoryInterface
     {
         $wallet = Wallet::findOrFail($walletId);
 
-        return $wallet->transactions;
+        return $wallet->allTransactions();
     }
 }

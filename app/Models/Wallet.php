@@ -22,8 +22,18 @@ class Wallet extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function transactions()
+    public function receivedTransactions()
     {
-        return $this->hasMany(Transaction::class, 'sender_id')->orWhere('receiver_id', $this->id);
+        return $this->hasMany(Transaction::class, 'receiver_id');
+    }
+
+    public function sentTransactions()
+    {
+        return $this->hasMany(Transaction::class, 'sender_id');
+    }
+
+    public function allTransactions()
+    {
+        return $this->sentTransactions->concat($this->receivedTransactions);
     }
 }
