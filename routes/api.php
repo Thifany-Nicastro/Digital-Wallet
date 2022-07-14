@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Response;
 use App\Http\Controllers\User\AuthenticationController;
 use App\Http\Controllers\User\ProfileController;
-use App\Http\Controllers\Wallet\TransactionController;
+use App\Http\Controllers\Transaction\CreateTransactionController;
+use App\Http\Controllers\Transaction\ListTransactionsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,8 +30,8 @@ Route::post('/login', [AuthenticationController::class, 'login']);
 Route::middleware('auth:api')->group(function () {
     Route::get('/profile', [ProfileController::class, 'showUserProfile']);
 
-    Route::post('/transactions', [TransactionController::class, 'createNewTransaction'])->middleware('customer');
-    Route::get('/transactions', [TransactionController::class, 'getUserTransactions']);
+    Route::post('/transactions', CreateTransactionController::class)->middleware('customer');
+    Route::get('/transactions', ListTransactionsController::class);
 });
 
 

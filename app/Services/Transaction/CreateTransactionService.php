@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Transaction;
 
 use App\Models\Transaction;
 use App\Interfaces\TransactionRepositoryInterface;
@@ -11,9 +11,8 @@ use App\Exceptions\Transaction\PaymentUnauthorizedException;
 use App\Exceptions\Transaction\UnsuccessfulTransactionException;
 use Illuminate\Support\Facades\DB;
 use Exception;
-use Illuminate\Support\Collection;
 
-class TransactionService
+class CreateTransactionService
 {
     public function __construct(
         private TransactionRepositoryInterface $transactionRepository,
@@ -56,12 +55,5 @@ class TransactionService
         }
 
         return $transaction;
-    }
-
-    public function getUserTransactions(string $walletId): Collection
-    {
-        $transactions = $this->walletRepository->getWalletTransactions($walletId);
-
-        return $transactions;
     }
 }
