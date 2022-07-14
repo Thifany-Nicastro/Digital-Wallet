@@ -26,7 +26,7 @@ class TransactionRequest extends FormRequest
         return [
             'receiver_id' => ['required', 'exists:wallets,id'],
             'description' => ['nullable'],
-            'amount' => ['required', 'numeric'],
+            'amount' => ['required', 'numeric', 'min:10'],
         ];
     }
 }
