@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Transaction extends Model
 {
@@ -25,12 +26,12 @@ class Transaction extends Model
         );
     }
 
-    public function sender()
+    public function sender(): BelongsTo
     {
         return $this->belongsTo(Wallet::class, 'sender_id');
     }
 
-    public function receiver()
+    public function receiver(): BelongsTo
     {
         return $this->belongsTo(Wallet::class, 'receiver_id');
     }
