@@ -10,7 +10,7 @@ class AuthenticationService
     {
         $token = auth()->attempt($credentials);
 
-        if (!$token) {
+        if (! $token) {
             throw new InvalidCredentialsException();
         }
 

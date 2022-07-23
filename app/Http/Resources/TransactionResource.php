@@ -20,7 +20,7 @@ class TransactionResource extends JsonResource
             'payee' => $this->receiver->user->full_name,
             'description' => $this->description,
             'amount' => $this->amount,
-            'date' => $this->created_at
+            'date' => $this->created_at,
         ];
     }
 }

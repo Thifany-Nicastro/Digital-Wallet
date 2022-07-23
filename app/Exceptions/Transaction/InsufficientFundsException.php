@@ -10,7 +10,7 @@ class InsufficientFundsException extends Exception
     public function render($request)
     {
         return response()->json([
-            'message' => 'Insufficient funds'
+            'message' => 'Insufficient funds',
         ], Response::HTTP_BAD_REQUEST);
     }
 }

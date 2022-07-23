@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Response;
 use App\Http\Resources\ProfileResource;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response;
 
 class ProfileController extends Controller
 {

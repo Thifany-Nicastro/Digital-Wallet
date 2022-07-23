@@ -1,12 +1,11 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Response;
-use App\Http\Controllers\User\AuthenticationController;
-use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\Transaction\CreateTransactionController;
 use App\Http\Controllers\Transaction\ListTransactionsController;
+use App\Http\Controllers\User\AuthenticationController;
+use App\Http\Controllers\User\ProfileController;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +32,6 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/transactions', CreateTransactionController::class)->middleware('customer');
     Route::get('/transactions', ListTransactionsController::class);
 });
-
 
 Route::fallback(function () {
     abort(Response::HTTP_NOT_FOUND, 'Page Not Found');

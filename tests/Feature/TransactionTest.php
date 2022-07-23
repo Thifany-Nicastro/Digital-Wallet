@@ -2,11 +2,11 @@
 
 namespace Tests\Feature;
 
+use App\Models\User;
+use App\Models\Wallet;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
-use App\Models\User;
-use App\Models\Wallet;
 
 class TransactionTest extends TestCase
 {
@@ -24,7 +24,7 @@ class TransactionTest extends TestCase
                         return ['balance' => '300'];
                     })
             )->create([
-                'document' => $this->faker->cpf(false)
+                'document' => $this->faker->cpf(false),
             ]);
 
         $receiver = User::factory()
@@ -38,13 +38,13 @@ class TransactionTest extends TestCase
         $response = $this->loginAs($sender)->post('/api/transactions', [
             'receiver_id' => $receiver->wallet->id,
             'description' => 'lorem ipsum',
-            'amount' => '100'
+            'amount' => '100',
         ]);
 
         $response->assertStatus(200);
         $response->assertJson([
             'description' => 'lorem ipsum',
-            'amount' => '100'
+            'amount' => '100',
         ]);
     }
 
@@ -60,7 +60,7 @@ class TransactionTest extends TestCase
                         return ['balance' => '100'];
                     })
             )->create([
-                'document' => $this->faker->cpf(false)
+                'document' => $this->faker->cpf(false),
             ]);
 
         $receiver = User::factory()
@@ -74,7 +74,7 @@ class TransactionTest extends TestCase
         $response = $this->loginAs($sender)->post('/api/transactions', [
             'receiver_id' => $receiver->wallet->id,
             'description' => 'lorem ipsum',
-            'amount' => '200'
+            'amount' => '200',
         ]);
 
         $response->assertStatus(400);
@@ -92,7 +92,7 @@ class TransactionTest extends TestCase
                         return ['balance' => '100'];
                     })
             )->create([
-                'document' => $this->faker->cpf(false)
+                'document' => $this->faker->cpf(false),
             ]);
 
         $receiver = User::factory()->has(Wallet::factory())->create();
@@ -100,7 +100,7 @@ class TransactionTest extends TestCase
         $response = $this->loginAs($sender)->post('/api/transactions', [
             'receiver_id' => $receiver->wallet->id,
             'description' => 'lorem ipsum',
-            'amount' => '9'
+            'amount' => '9',
         ]);
 
         $response->assertStatus(422);
@@ -118,7 +118,7 @@ class TransactionTest extends TestCase
                         return ['balance' => '100'];
                     })
             )->create([
-                'document' => $this->faker->cpf(false)
+                'document' => $this->faker->cpf(false),
             ]);
 
         $receiver = User::factory()->has(Wallet::factory())->create();
@@ -126,7 +126,7 @@ class TransactionTest extends TestCase
         $response = $this->loginAs($sender)->post('/api/transactions', [
             'receiver_id' => $receiver->wallet->id,
             'description' => 'lorem ipsum',
-            'amount' => '-10'
+            'amount' => '-10',
         ]);
 
         $response->assertStatus(422);
@@ -148,7 +148,7 @@ class TransactionTest extends TestCase
     public function seller_should_not_be_able_to_make_payment()
     {
         $seller = User::factory()->create([
-            'document' => $this->faker->cnpj(false)
+            'document' => $this->faker->cnpj(false),
         ]);
 
         $response = $this->loginAs($seller)->post('/api/transactions');

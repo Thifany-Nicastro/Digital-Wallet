@@ -20,7 +20,7 @@ class WalletRepository implements WalletRepositoryInterface
         $currentBalance = $wallet->balance;
 
         $wallet->update([
-            'balance' => $currentBalance + $amount
+            'balance' => $currentBalance + $amount,
         ]);
     }
 
@@ -31,7 +31,7 @@ class WalletRepository implements WalletRepositoryInterface
         $currentBalance = $wallet->balance;
 
         $wallet->update([
-            'balance' => $currentBalance - $amount
+            'balance' => $currentBalance - $amount,
         ]);
     }
 

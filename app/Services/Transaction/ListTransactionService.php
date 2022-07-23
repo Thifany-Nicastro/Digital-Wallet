@@ -9,7 +9,8 @@ class ListTransactionService
 {
     public function __construct(
         private WalletRepositoryInterface $walletRepository,
-    ) {}
+    ) {
+    }
 
     public function getUserTransactions(string $walletId): Collection
     {

@@ -2,9 +2,9 @@
 
 namespace App\Observers;
 
+use App\Jobs\NotifyPaymentJob;
 use App\Models\Transaction;
 use Ramsey\Uuid\Uuid;
-use App\Jobs\NotifyPaymentJob;
 
 class TransactionObserver
 {

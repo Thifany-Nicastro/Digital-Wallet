@@ -3,9 +3,8 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
-use Ramsey\Uuid\Uuid;
 use Illuminate\Support\Facades\Hash;
+use Ramsey\Uuid\Uuid;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -21,7 +20,7 @@ class UserFactory extends Factory
     {
         $document = [
             $this->faker->cpf(false),
-            $this->faker->cnpj(false)
+            $this->faker->cnpj(false),
         ];
 
         return [
@@ -30,7 +29,7 @@ class UserFactory extends Factory
             'last_name' => $this->faker->lastName(),
             'document' => $document[random_int(0, 1)],
             'email' => $this->faker->unique()->safeEmail(),
-            'password' => Hash::make('password')
+            'password' => Hash::make('password'),
         ];
     }
 }

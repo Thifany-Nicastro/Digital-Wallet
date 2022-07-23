@@ -2,7 +2,6 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class ServerConnectionTest extends TestCase
@@ -16,7 +15,7 @@ class ServerConnectionTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertJson([
-            'message' => 'Pong!'
+            'message' => 'Pong!',
         ]);
     }
 }

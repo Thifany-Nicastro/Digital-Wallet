@@ -5,7 +5,6 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Http\JsonResponse;
 
 class EnsureUserIsCustomer
 {
@@ -20,7 +19,7 @@ class EnsureUserIsCustomer
     {
         if (auth()->user()->isSeller()) {
             return response()->json([
-                'message' => 'Sellers do not have permission to access this route'
+                'message' => 'Sellers do not have permission to access this route',
             ], Response::HTTP_FORBIDDEN);
         }
 

@@ -10,7 +10,7 @@ class PaymentUnauthorizedException extends Exception
     public function render($request)
     {
         return response()->json([
-            'message' => 'Payment not authorized'
+            'message' => 'Payment not authorized',
         ], Response::HTTP_BAD_REQUEST);
     }
 }
