@@ -53,6 +53,18 @@ services:
         networks:
             - digital-wallet
 
+    queue:
+        container_name: queue
+        image: laravel9-app
+        restart: unless-stopped
+        command: "php artisan queue:work"
+        volumes:
+            - ./:/var/www
+        depends_on:
+            - app
+        networks:
+            - digital-wallet
+
 networks:
     digital-wallet:
         driver: bridge
