@@ -3,12 +3,13 @@
 namespace App\Services\External;
 
 use Illuminate\Support\Facades\Http;
+use App\Interfaces\PaymentNotificationServiceInterface;
 
-class PaymentNotificationService
+class PaymentNotificationService implements PaymentNotificationServiceInterface
 {
     private const SUCCESS = 'Success';
 
-    public static function isAvailable(): bool
+    public function isAvailable(): bool
     {
         $response = Http::get('http://o4d9z.mocklab.io/notify')->json();
 

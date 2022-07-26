@@ -57,7 +57,7 @@ services:
         container_name: queue
         image: laravel9-app
         restart: unless-stopped
-        command: "php artisan queue:work"
+        command: "php artisan queue:listen"
         volumes:
             - ./:/var/www
         depends_on:

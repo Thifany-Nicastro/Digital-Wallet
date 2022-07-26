@@ -8,7 +8,7 @@ use App\Exceptions\Transaction\UnsuccessfulTransactionException;
 use App\Interfaces\TransactionRepositoryInterface;
 use App\Interfaces\WalletRepositoryInterface;
 use App\Models\Transaction;
-use App\Services\External\PaymentAuthorizationService;
+use App\Interfaces\PaymentAuthorizationServiceInterface;
 use Exception;
 use Illuminate\Support\Facades\DB;
 
@@ -17,7 +17,7 @@ class CreateTransactionService
     public function __construct(
         private TransactionRepositoryInterface $transactionRepository,
         private WalletRepositoryInterface $walletRepository,
-        private PaymentAuthorizationService $paymentAuthorizationService,
+        private PaymentAuthorizationServiceInterface $paymentAuthorizationService,
     ) {
     }
 

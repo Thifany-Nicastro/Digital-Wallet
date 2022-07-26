@@ -2,11 +2,11 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\ServiceProvider;
 use App\Interfaces\TransactionRepositoryInterface;
 use App\Interfaces\WalletRepositoryInterface;
 use App\Repositories\TransactionRepository;
 use App\Repositories\WalletRepository;
-use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
 {

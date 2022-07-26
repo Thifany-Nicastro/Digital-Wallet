@@ -4,7 +4,7 @@ namespace App\Jobs;
 
 use App\Models\User;
 use App\Notifications\PaymentReceived;
-use App\Services\External\PaymentNotificationService;
+use App\Interfaces\PaymentNotificationServiceInterface;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -31,7 +31,7 @@ class NotifyPaymentJob implements ShouldQueue
      *
      * @return void
      */
-    public function handle(PaymentNotificationService $paymentNotificationService)
+    public function handle(PaymentNotificationServiceInterface $paymentNotificationService)
     {
         $isAvailable = $paymentNotificationService->isAvailable();
 

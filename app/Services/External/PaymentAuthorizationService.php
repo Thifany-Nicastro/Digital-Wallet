@@ -3,8 +3,9 @@
 namespace App\Services\External;
 
 use Illuminate\Support\Facades\Http;
+use App\Interfaces\PaymentAuthorizationServiceInterface;
 
-class PaymentAuthorizationService
+class PaymentAuthorizationService implements PaymentAuthorizationServiceInterface
 {
     private const AUTHORIZED = 'Autorizado';
 
