@@ -2,11 +2,11 @@
 
 namespace App\Repositories;
 
-use App\Interfaces\WalletRepositoryInterface;
+use App\Interfaces\IWalletRepository;
 use App\Models\Wallet;
 use Illuminate\Support\Collection;
 
-class WalletRepository implements WalletRepositoryInterface
+class WalletRepository implements IWalletRepository
 {
     public function getWalletBalance(string $walletId): float
     {

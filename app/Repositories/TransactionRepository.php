@@ -2,10 +2,10 @@
 
 namespace App\Repositories;
 
-use App\Interfaces\TransactionRepositoryInterface;
+use App\Interfaces\ITransactionRepository;
 use App\Models\Transaction;
 
-class TransactionRepository implements TransactionRepositoryInterface
+class TransactionRepository implements ITransactionRepository
 {
     public function createTransaction(array $transactionDetails): Transaction
     {

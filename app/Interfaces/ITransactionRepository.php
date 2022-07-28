@@ -4,7 +4,7 @@ namespace App\Interfaces;
 
 use App\Models\Transaction;
 
-interface TransactionRepositoryInterface
+interface ITransactionRepository
 {
     public function createTransaction(array $transactionDetails): Transaction;
 }

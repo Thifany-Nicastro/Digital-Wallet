@@ -3,8 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Interfaces\PaymentAuthorizationServiceInterface;
-use App\Interfaces\PaymentNotificationServiceInterface;
+use App\Interfaces\IPaymentAuthorizationService;
+use App\Interfaces\IPaymentNotificationService;
 use App\Services\External\PaymentAuthorizationService;
 use App\Services\External\PaymentNotificationService;
 
@@ -17,8 +17,8 @@ class ExternalServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(PaymentAuthorizationServiceInterface::class, PaymentAuthorizationService::class);
-        $this->app->bind(PaymentNotificationServiceInterface::class, PaymentNotificationService::class);
+        $this->app->bind(IPaymentAuthorizationService::class, PaymentAuthorizationService::class);
+        $this->app->bind(IPaymentNotificationService::class, PaymentNotificationService::class);
     }
 
     /**

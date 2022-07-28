@@ -2,7 +2,7 @@
 
 namespace App\Interfaces;
 
-interface PaymentNotificationServiceInterface
+interface IPaymentNotificationService
 {
     public function isAvailable(): bool;
 }

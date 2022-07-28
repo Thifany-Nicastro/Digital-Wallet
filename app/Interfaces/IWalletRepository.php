@@ -4,7 +4,7 @@ namespace App\Interfaces;
 
 use Illuminate\Support\Collection;
 
-interface WalletRepositoryInterface
+interface IWalletRepository
 {
     public function getWalletBalance(string $walletId): float;
 

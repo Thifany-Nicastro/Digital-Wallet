@@ -3,9 +3,9 @@
 namespace App\Services\External;
 
 use Illuminate\Support\Facades\Http;
-use App\Interfaces\PaymentNotificationServiceInterface;
+use App\Interfaces\IPaymentNotificationService;
 
-class PaymentNotificationService implements PaymentNotificationServiceInterface
+class PaymentNotificationService implements IPaymentNotificationService
 {
     private const SUCCESS = 'Success';
 

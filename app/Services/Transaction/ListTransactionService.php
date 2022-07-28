@@ -2,13 +2,13 @@
 
 namespace App\Services\Transaction;
 
-use App\Interfaces\WalletRepositoryInterface;
+use App\Interfaces\IWalletRepository;
 use Illuminate\Support\Collection;
 
 class ListTransactionService
 {
     public function __construct(
-        private WalletRepositoryInterface $walletRepository,
+        private IWalletRepository $walletRepository,
     ) {
     }
 

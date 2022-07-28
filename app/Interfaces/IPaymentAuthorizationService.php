@@ -2,7 +2,7 @@
 
 namespace App\Interfaces;
 
-interface PaymentAuthorizationServiceInterface
+interface IPaymentAuthorizationService
 {
     public function isAuthorized(): bool;
 }

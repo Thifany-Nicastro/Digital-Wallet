@@ -2,22 +2,22 @@
 
 namespace App\Services\Transaction;
 
+use Illuminate\Support\Facades\DB;
 use App\Exceptions\Transaction\InsufficientFundsException;
 use App\Exceptions\Transaction\PaymentUnauthorizedException;
 use App\Exceptions\Transaction\UnsuccessfulTransactionException;
-use App\Interfaces\TransactionRepositoryInterface;
-use App\Interfaces\WalletRepositoryInterface;
+use App\Interfaces\ITransactionRepository;
+use App\Interfaces\IWalletRepository;
+use App\Interfaces\IPaymentAuthorizationService;
 use App\Models\Transaction;
-use App\Interfaces\PaymentAuthorizationServiceInterface;
 use Exception;
-use Illuminate\Support\Facades\DB;
 
 class CreateTransactionService
 {
     public function __construct(
-        private TransactionRepositoryInterface $transactionRepository,
-        private WalletRepositoryInterface $walletRepository,
-        private PaymentAuthorizationServiceInterface $paymentAuthorizationService,
+        private ITransactionRepository $transactionRepository,
+        private IWalletRepository $walletRepository,
+        private IPaymentAuthorizationService $paymentAuthorizationService,
     ) {
     }
 
